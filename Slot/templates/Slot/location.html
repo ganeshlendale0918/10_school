@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Location Tracker</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #demo {
+      font-size: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px 20px;
+      border-radius: 12px;
+      width: 80%;
+      margin: 0 auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    button {
+      margin-top: 30px;
+      background-color: #fff;
+      color: #5563DE;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #f4f4f4;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌎 Live Location Tracker</h1>
+  <p>Click the button below to get your current location:</p>
+
+  <button onclick="getLocation()">Get My Location</button>
+
+  <p id="demo">Location data will appear here...</p>
+
+  <footer>Powered by HTML5 Geolocation API</footer>
+
+  <script>
+    const x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function success(position) {
+      x.innerHTML = 
+        "📍 Latitude: " + position.coords.latitude.toFixed(6) +
+        "<br>📍 Longitude: " + position.coords.longitude.toFixed(6);
+    }
+
+    function error() {
+      alert("Sorry, no position available or permission denied.");
+    }
+  </script>
+
+</body>
+</html>

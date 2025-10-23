@@ -1,0 +1,16 @@
+<h1>Parking Slots</h1>
+<a href="{% url 'dashboard' %}">Dashboard</a>
+<hr>
+<ul>
+  {% for slot in slots %}
+    <li>
+      {{ slot.slot_number }} - {{ slot.status|title }}
+      {% if slot.status == "available" %}
+        <a href="{% url 'book_slot' slot.id %}">Book Now</a>
+      {% else %}
+        <!-- Do nothing or show booked -->
+        <span style="color:red;">Booked</span>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

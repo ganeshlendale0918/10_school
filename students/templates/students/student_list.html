@@ -1,0 +1,11 @@
+<table>
+    <tr><th>Name</th><th>Age</th><th>Grade</th><th>City</th></tr>
+    {% for s in students %}
+    <tr>
+        <td>{{s.name}}</td>
+        <td>{{s.age}}</td>
+        <td>{{s.grade}}</td>
+        <td>{{s.city}}</td>
+    </tr>
+    {% endfor %}
+</table>

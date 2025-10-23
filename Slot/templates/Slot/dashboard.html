@@ -1,0 +1,29 @@
+<h1>Dashboard - All Bookings</h1>
+<a href="{% url 'view_slots' %}">View Parking Slots</a>
+<hr>
+<table border="1">
+    <tr>
+        <th>Slot Number</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    {% for booking in bookings %}
+    <tr>
+        <td>{{ booking.slot.slot_number }}</td>
+        <td>{{ booking.start_time }}</td>
+        <td>{{ booking.end_time }}</td>
+        <td>{{ booking.status }}</td>
+        <td>
+            {% if booking.status == "confirmed" %}
+                <a href="{% url 'cancel_booking' booking.id %}">Cancel</a>
+            {% else %}
+                -
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No bookings yet!</td></tr>
+    {% endfor %}
+</table>
